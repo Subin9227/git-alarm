@@ -1,5 +1,5 @@
 const { getConfig } = require("./config");
-const { sendDiscordAlert } = require("./discord");
+const { sendDiscordAlert, sendDiscordTestAlert } = require("./discord");
 const { compareCommits, getFileContent, getLatestCommit, getRepo } = require("./github");
 const { parseMarkdownFile } = require("./parser");
 const { loadState, saveState } = require("./state");
@@ -10,6 +10,13 @@ function isMarkdownFile(path) {
 
 async function main() {
   const config = getConfig();
+
+  if (config.forceTestAlert) {
+    await sendDiscordTestAlert(config.discordWebhookUrl, config.sourceRepo);
+    console.log("Sent Discord test alert.");
+    return;
+  }
+
   const state = await loadState(config.statePath);
 
   const repo = await getRepo(config.sourceRepo, config.githubToken);

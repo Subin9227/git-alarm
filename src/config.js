@@ -14,6 +14,7 @@ function getConfig() {
 
   return {
     discordWebhookUrl: process.env.DISCORD_WEBHOOK_URL,
+    forceTestAlert: process.env.FORCE_TEST_ALERT === "true",
     githubToken: process.env.SOURCE_REPO_TOKEN,
     sourceRepo: process.env.SOURCE_REPO || DEFAULT_SOURCE_REPO,
     statePath: process.env.STATE_PATH || DEFAULT_STATE_PATH

@@ -4,9 +4,14 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      force_test_alert:
+        description: "Send a Discord test alert"
+        required: false
+        default: "false"
   schedule:
     - cron: "0 * * * *"
-  workflow_dispatch:
 
 permissions:
   contents: write
@@ -27,6 +32,7 @@ jobs:
       - name: Run checker
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          FORCE_TEST_ALERT: ${{ github.event.inputs.force_test_alert || 'false' }}
           SOURCE_REPO_TOKEN: ${{ secrets.SOURCE_REPO_TOKEN }}
         run: node src/index.js
 

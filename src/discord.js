@@ -54,6 +54,50 @@ async function sendDiscordAlert(webhookUrl, repoName, items) {
   }
 }
 
+async function sendDiscordTestAlert(webhookUrl, repoName) {
+  const payload = {
+    username: "git-alarm",
+    content: "Discord 테스트 알림입니다.",
+    embeds: [
+      {
+        title: "git-alarm test",
+        description: "수동 실행으로 보낸 테스트 메시지입니다.",
+        color: 5763719,
+        fields: [
+          {
+            name: "Repository",
+            value: repoName,
+            inline: true
+          },
+          {
+            name: "Type",
+            value: "manual test",
+            inline: true
+          }
+        ],
+        footer: {
+          text: "git-alarm"
+        },
+        timestamp: new Date().toISOString()
+      }
+    ]
+  };
+
+  const response = await fetch(webhookUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`Discord webhook test request failed (${response.status}): ${body}`);
+  }
+}
+
 module.exports = {
-  sendDiscordAlert
+  sendDiscordAlert,
+  sendDiscordTestAlert
 };
