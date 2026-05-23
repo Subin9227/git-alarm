@@ -1,6 +1,9 @@
 name: Check Alex Notes
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: "0 * * * *"
   workflow_dispatch:
