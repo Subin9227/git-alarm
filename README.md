@@ -1,6 +1,6 @@
 # git-alarm
 
-`100-hours-a-week/alex-notes` 저장소에 새 `.md` 파일이 추가되면 Discord로 알림을 보내는 GitHub Actions 프로젝트입니다.
+저장소에 새 `.md` 파일이 추가되면 Discord로 알림을 보내는 GitHub Actions 프로젝트입니다.
 
 ## How It Works
 
