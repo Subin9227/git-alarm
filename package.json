@@ -1,0 +1,9 @@
+{
+  "name": "git-alarm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Discord alerts for new markdown files in a GitHub repository",
+  "scripts": {
+    "check": "node src/index.js"
+  }
+}
