@@ -4,7 +4,7 @@
 
 ## How It Works
 
-1. GitHub Actions가 매시간 실행됩니다.
+1. GitHub Actions가 30분마다 실행됩니다. 현재 스케줄은 매시 `:07`, `:37`입니다.
 2. 이전에 확인한 커밋 SHA와 최신 커밋 SHA를 비교합니다.
 3. 새로 추가된 `.md` 파일만 찾습니다.
 4. 문서 제목과 요약을 뽑아 Discord Webhook으로 전송합니다.
@@ -32,3 +32,7 @@ node src/index.js
 1. GitHub 저장소에서 `Actions` 탭으로 이동합니다.
 2. `Check Alex Notes` 워크플로우를 선택합니다.
 3. `Run workflow`를 눌러 수동 실행합니다.
+
+## Incident Notes
+
+- 2026-05-27 새벽 지연 알림 이슈 기록: [INCIDENT_2026-05-27.md](./INCIDENT_2026-05-27.md)
